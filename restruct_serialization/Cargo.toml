@@ -1,0 +1,11 @@
+[package]
+name = "restruct_serialization"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = "1.0.160"
+serde-xml-rs = { git = "https://github.com/duckfromdiscord/serde-xml-rs" }
+serde_derive = "1.0.160"

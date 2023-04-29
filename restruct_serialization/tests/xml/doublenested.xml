@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 2</name>
+    <events>
+        <comment>Comment</comment>
+        <event-block sid="830780976353387">
+            <conditions>
+                <condition id="-6" name="Every X seconds" sid="543262662885760" type="System">
+                    <param id="0" name="Interval (seconds)">1.0</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-43" name="Go to next/previous layout" sid="217827531975590" type="System">
+                    <param id="0" name="Which">0</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="479400878792401">
+                    <conditions>
+                        <condition id="-1" name="Every tick" sid="588256401483047" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-18" name="Set layer opacity" sid="285417231536236" type="System">
+                            <param id="0" name="Layer">0</param>
+                            <param id="1" name="Opacity">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="273712807337330">
+                            <conditions>
+                                <condition id="-31" name="Object UID exists" sid="350219935344766" type="System">
+                                    <param id="0" name="UID">2</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

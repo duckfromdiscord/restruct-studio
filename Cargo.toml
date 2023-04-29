@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "restruct_serialization",
+    "restruct_lang",
+]
