@@ -16,11 +16,11 @@ const INDENT: &str = "    ";
 // None of these functions should be public.
 
 fn safe(value: String) -> String {
-    return value.replace("\"", "&quot;");
+    value.replace('\"', "&quot;")
 }
 
 fn indent_level(level: usize) -> String {
-    if level <= 0 {
+    if level == 0 {
         return "".to_owned();
     }
     INDENT.to_owned().repeat(level)
@@ -139,31 +139,29 @@ fn proc_eblock(indents: usize, eventblock: &mut EventBlock) -> String {
             xml += "<actions />\r\n";
         }
     }
-    match eventblock.clone().subevents {
-        Some(subevents) => {
+    if let Some(subevents) = eventblock.clone().subevents {
             xml += &( indent_level(indents+1) + "<sub-events>\r\n" );
             for mut subevent in subevents.value {
                 xml += &proc_event(indents+2, &mut subevent);
             }
             xml += &( indent_level(indents+1) + "</sub-events>\r\n" );
-        },
-        None => (),
     }
     xml += &( indent_level(indents) + "</event-block>\r\n" );
-    return xml;
+    
+    xml
 }
 
 fn proc_variable(indents: usize, variable: &mut Variable) -> String {
-    return indent_level(indents) + "<variable constant=\"" + &variable.constant +
+    indent_level(indents) + "<variable constant=\"" + &variable.constant +
                                     "\" name=\"" + &variable.name +
                                     "\" sid=\"" + &variable.sid +
                                     "\" static=\"" + &variable._static +
                                     "\" type=\"" + &variable._type + "\">"
-                                    + &variable.value +"</variable>\r\n";
+                                    + &variable.value +"</variable>\r\n"
 }
 
 fn proc_comment(indents: usize, comment: &mut Comment) -> String {
-    return indent_level(indents) + "<comment>" + &comment.value + "</comment>\r\n";
+    indent_level(indents) + "<comment>" + &comment.value + "</comment>\r\n"
 }
 
 fn proc_event(indents: usize, event: &mut Event) -> String {
@@ -196,7 +194,7 @@ pub fn structs_to_bytes(sheet: &C2Eventsheet) -> Vec<u8> {
     xml += &( indent_level(indents) + "<!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->\r\n" );
     xml += &( indent_level(indents) + "<name>" + &sheet.name.value + "</name>\r\n" );
 
-    if sheet.events.events.clone().unwrap_or(vec![]).len() <= 0 {
+    if sheet.events.events.clone().unwrap_or(vec![]).is_empty() {
         xml += &( indent_level(indents) + "<events />\r\n" );
     } else {
 

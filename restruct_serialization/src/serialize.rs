@@ -8,7 +8,7 @@ use crate::types::*;
 */
 
 pub fn structs_from_string(file: String) -> C2Eventsheet {
-    return serde_xml_rs::from_str(&file.trim_start_matches('\u{feff}')).unwrap();
+    return serde_xml_rs::from_str(file.trim_start_matches('\u{feff}')).unwrap();
     // serde_xml_rs never accepted the PR that fixed the BOM issue. I am using a copy of the PR
     // that only consists of the branch with the change, and linking with it,
     // but I remove the BOM here anyway just in case.
