@@ -2,4 +2,5 @@
 members = [
     "restruct_serialization",
     "restruct_lang",
+    "restruct_studio",
 ]

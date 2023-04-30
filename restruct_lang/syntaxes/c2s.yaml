@@ -1,0 +1,13 @@
+%YAML 1.2
+---
+name: ConstructScript
+file_extensions: [c2s]
+scope: source.c2s
+
+contexts:
+  main:
+    - include: number
+
+  number:
+    - match: \b[0-9]+\b
+      scope: constant.numeric.value.c2s
