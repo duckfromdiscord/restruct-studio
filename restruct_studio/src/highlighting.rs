@@ -1,5 +1,4 @@
 use egui::text::LayoutJob;
-use restruct_lang;
 
 /// Memoized Code highlighting
 pub fn highlight(ctx: &egui::Context, theme: &CodeTheme, code: &str, language: &str) -> LayoutJob {

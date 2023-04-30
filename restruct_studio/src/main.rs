@@ -8,7 +8,7 @@ fn main() -> eframe::Result<()> {
 
     let native_options = eframe::NativeOptions::default();
     eframe::run_native(
-        "Restruct-Studio",
+        "restruct-studio",
         native_options,
         Box::new(|cc| Box::new(restruct_studio::RestructApp::new(cc))),
     )
