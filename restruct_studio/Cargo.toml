@@ -16,6 +16,7 @@ eframe = { version = "0.21.0", default-features = false, features = [
 enum-map = { version = "2", features = ["serde"] }
 syntect = { version = "5", default-features = false, features = ["default-fancy"] }
 serde = { version = "1", features = ["derive"] }
+egui_file = "0.8.1"
 
 # native:
 [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
