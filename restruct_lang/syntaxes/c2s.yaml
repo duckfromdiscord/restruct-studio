@@ -7,7 +7,22 @@ scope: source.c2s
 contexts:
   main:
     - include: number
-
+    - include: comment
+    - include: vardeclaration
+    - include: types
+  
   number:
     - match: \b[0-9]+\b
       scope: constant.numeric.value.c2s
+
+  comment:
+    - match: \#.*
+      scope: comment.line.c2s
+  
+  vardeclaration:
+    - match: (let|const)
+      scope: storage.type.c2s
+  
+  types:
+    - match: (num|str)
+      scope: support.type.c2s

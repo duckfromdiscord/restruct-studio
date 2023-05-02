@@ -30,3 +30,9 @@ fn nested() {
 fn doublenested() {
     passthrough( include_str!("./xml/doublenested.xml"), "doublenested" );
 }
+
+
+#[test]
+fn variable() {
+    passthrough( include_str!("./xml/variable.xml"), "variable" );
+}

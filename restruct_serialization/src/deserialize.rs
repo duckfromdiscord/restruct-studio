@@ -19,7 +19,7 @@ fn safe(value: String) -> String {
     value.replace('\"', "&quot;")
 }
 
-fn indent_level(level: usize) -> String {
+pub fn indent_level(level: usize) -> String {
     if level == 0 {
         return "".to_owned();
     }

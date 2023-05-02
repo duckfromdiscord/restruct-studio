@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 2</name>
+    <events>
+        <variable constant="1" name="GlobalVar" sid="676245040443424" static="0" type="number">3</variable>
+        <variable constant="0" name="NotConstant" sid="446612431516079" static="0" type="number">4</variable>
+        <comment>Comment</comment>
+    </events>
+</c2eventsheet>

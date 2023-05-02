@@ -5,7 +5,7 @@ The end goal of this project is to allow anyone to do just that. Import a Constr
 
 ## Modules
 
-- `restruct_studio` will be the IDE and the frontend for users. I haven't started it yet, but it should be GUI-based, intuitive, and platform-accessible. I would like to have it run mainly in the browser with WASM so that anyone can use it without having to install or build the entire suite.
+- `restruct_studio` will be the IDE and the frontend for users. It will be GUI-based, intuitive, and platform-accessible. I would like to have it run mainly in the browser with WASM so that anyone can use it without having to install or build the entire suite. `egui` will work perfectly for this, with `syntect` providing syntax highlighting.
 - `restruct_lang` will contain all the logic to "fill in the blanks" between my language and the intermediate representation provided by `restruct_serialization`.
 - `restruct_serialization` is the first module under Restruct-Studio. It will parse any existing event sheet XML into intermediate representation for use by the rest of the suite, and it will also be able to convert that representation back into XML. I would like to be able to get the output to be as close to the input as possible, so I will be implementing some tests that make sure conversion is 1-to-1 and the output XML is equal to the input XML.
 
