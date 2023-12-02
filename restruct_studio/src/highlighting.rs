@@ -19,8 +19,7 @@ pub fn highlight(ctx: &egui::Context, theme: &CodeTheme, code: &str, language: &
 
 // ----------------------------------------------------------------------------
 
-#[derive(Clone, Copy, Hash, PartialEq)]
-#[derive(serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Copy, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 enum SyntectTheme {
     Base16EightiesDark,
     Base16MochaDark,
@@ -82,8 +81,7 @@ impl SyntectTheme {
     }
 }
 
-#[derive(Clone, Hash, PartialEq)]
-#[derive(serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Hash, PartialEq, serde::Deserialize, serde::Serialize)]
 #[serde(default)]
 pub struct CodeTheme {
     dark_mode: bool,
@@ -98,7 +96,6 @@ impl Default for CodeTheme {
 }
 
 impl CodeTheme {
-    
     pub fn from_memory(ctx: &egui::Context) -> Self {
         if ctx.style().visuals.dark_mode {
             ctx.data_mut(|d| {

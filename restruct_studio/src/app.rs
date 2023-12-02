@@ -1,5 +1,5 @@
 use egui_file::FileDialog;
-use std::{path::PathBuf, fs};
+use std::{fs, path::PathBuf};
 
 #[derive(serde::Deserialize, serde::Serialize)]
 #[serde(default)]
@@ -15,10 +15,8 @@ pub struct RestructApp {
 impl Default for RestructApp {
     fn default() -> Self {
         Self {
-            title: "restruct-studio"
-            .into(),
-            code: ""
-            .into(),
+            title: "restruct-studio".into(),
+            code: "".into(),
             xml_file: None,
             xml_dialog: None,
         }
@@ -27,7 +25,6 @@ impl Default for RestructApp {
 
 impl RestructApp {
     pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
-
         if let Some(storage) = cc.storage {
             return eframe::get_value(storage, eframe::APP_KEY).unwrap_or_default();
         }
@@ -37,12 +34,13 @@ impl RestructApp {
 }
 
 impl eframe::App for RestructApp {
-
     fn update(&mut self, ctx: &egui::Context, frame: &mut eframe::Frame) {
-        let Self { title,
+        let Self {
+            title,
             code,
             xml_file: _,
-            xml_dialog: _ } = self;
+            xml_dialog: _,
+        } = self;
 
         egui::TopBottomPanel::top("top_panel").show(ctx, |ui| {
             egui::menu::bar(ui, |ui| {
@@ -51,7 +49,7 @@ impl eframe::App for RestructApp {
                         let mut dialog = FileDialog::open_file(self.xml_file.clone());
                         dialog.open();
                         self.xml_dialog = Some(dialog);
-                  }
+                    }
                     if ui.button("Quit").clicked() {
                         frame.close();
                     }
@@ -64,22 +62,19 @@ impl eframe::App for RestructApp {
                 if let Some(file) = dialog.path() {
                     match restruct_lang::intoc2s::xml_to_c2s(fs::read_to_string(file).unwrap()) {
                         Ok(sheet) => {
-                            *code = sheet.code.to_string() ;
-                            *title = "restruct-studio - ".to_owned() + &sheet.sheet_name ;
+                            *code = sheet.code.to_string();
+                            *title = "restruct-studio - ".to_owned() + &sheet.sheet_name;
                             frame.set_window_title(title);
-                        },
+                        }
                         Err(err) => {
                             panic!("{}", err);
                         }
                     }
                 }
             }
-    }
+        }
 
         egui::CentralPanel::default().show(ctx, |ui| {
-            
-            
-
             let mut theme = crate::highlighting::CodeTheme::from_memory(ui.ctx());
             ui.collapsing("Theme", |ui| {
                 ui.group(|ui| {
@@ -106,9 +101,8 @@ impl eframe::App for RestructApp {
                         .layouter(&mut layouter),
                 );
             });
-            
+
             egui::warn_if_debug_build(ui);
         });
-
     }
 }
