@@ -93,8 +93,7 @@ fn proc_event(indents: usize, event: Event) -> Result<String, IntoError> {
     }
 }
 
-#[allow(non_snake_case)]
-pub fn into_C2S(sheet: restruct_serialization::types::C2Eventsheet) -> IntoResponse {
+pub fn into_c2s(sheet: restruct_serialization::types::C2Eventsheet) -> IntoResponse {
     let mut code = String::new();
 
     for object in sheet.events.events.unwrap_or_default() {
@@ -125,7 +124,7 @@ pub fn into_C2S(sheet: restruct_serialization::types::C2Eventsheet) -> IntoRespo
 pub fn xml_to_c2s(sheet: String) -> Result<IntoResponse, String> {
     let sheet = restruct_serialization::serialize::structs_from_string(sheet);
     match sheet {
-        Ok(sheet) => Ok(into_C2S(sheet)),
+        Ok(sheet) => Ok(into_c2s(sheet)),
         Err(e) => Err(e.to_string()),
     }
 }

@@ -1,5 +1,5 @@
 use std::str;
-use std::fs;
+//use std::fs;
 
 fn passthrough(xml: &str, _testname: &str) {
     let structs = restruct_serialization::serialize::structs_from_string( xml.to_string() );
