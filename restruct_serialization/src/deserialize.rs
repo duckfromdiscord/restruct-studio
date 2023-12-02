@@ -194,7 +194,7 @@ pub fn structs_to_bytes(sheet: &C2Eventsheet) -> Vec<u8> {
     xml += &( indent_level(indents) + "<!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->\r\n" );
     xml += &( indent_level(indents) + "<name>" + &sheet.name.value + "</name>\r\n" );
 
-    if sheet.events.events.clone().unwrap_or(vec![]).is_empty() {
+    if sheet.events.events.clone().unwrap_or_default().is_empty() {
         xml += &( indent_level(indents) + "<events />\r\n" );
     } else {
 
